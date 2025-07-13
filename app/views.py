@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Paciente
+from .models import *
 
 def listar_pacientes(request):
     pacientes = Paciente.objects.all()

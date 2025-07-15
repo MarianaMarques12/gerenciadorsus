@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}Página Inicial - SUS+{% endblock %}
+
+{% block content %}
+<section class="welcome" style="background:white; padding:40px; border-radius:10px; box-shadow: 0 8px 25px rgba(0,0,0,0.08); text-align:center; margin-bottom:40px;">
+  <h2 style="font-size:2.4rem; color:#0066cc; margin-bottom:15px;">Bem-vindo ao SUS+ — Agendamento e Gestão Simplificada</h2>
+  <p style="font-size:1.2rem; color:#555; max-width:700px; margin: 0 auto;">
+    Organize o atendimento médico com eficiência, reduza filas e ofereça
+    um serviço ágil e humanizado para os pacientes do SUS.
+  </p>
+</section>
+
+<section class="cards" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(250px,1fr)); gap:25px;">
+  <div class="card" tabindex="0" style="background: white; border-radius: 10px; padding: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.07); cursor:pointer;">
+    <h3 style="color: #004080; margin-bottom: 10px;">Gestão de Pacientes</h3>
+    <p>Registre e gerencie informações detalhadas dos pacientes, incluindo grupos de risco e histórico médico.</p>
+  </div>
+  <div class="card" tabindex="0" style="background: white; border-radius: 10px; padding: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.07); cursor:pointer;">
+    <h3 style="color: #004080; margin-bottom: 10px;">Agendamento de Consultas</h3>
+    <p>Controle os agendamentos com status claros: agendado, confirmado ou cancelado, garantindo o fluxo organizado.</p>
+  </div>
+  <div class="card" tabindex="0" style="background: white; border-radius: 10px; padding: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.07); cursor:pointer;">
+    <h3 style="color: #004080; margin-bottom: 10px;">Triagem Rápida</h3>
+    <p>Registre sintomas, prioridades e observações para um atendimento ágil e eficaz desde a chegada do paciente.</p>
+  </div>
+  <div class="card" tabindex="0" style="background: white; border-radius: 10px; padding: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.07); cursor:pointer;">
+    <h3 style="color: #004080; margin-bottom: 10px;">Controle de Exames</h3>
+    <p>Administre os exames e procedimentos, além do agendamento e resultados, de forma integrada.</p>
+  </div>
+  <div class="card" tabindex="0" style="background: white; border-radius: 10px; padding: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.07); cursor:pointer;">
+    <h3 style="color: #004080; margin-bottom: 10px;">Notificações</h3>
+    <p>Envie lembretes e notificações para pacientes, mantendo a comunicação sempre ativa e evitando faltas.</p>
+  </div>
+  <div class="card" tabindex="0" style="background: white; border-radius: 10px; padding: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.07); cursor:pointer;">
+    <h3 style="color: #004080; margin-bottom: 10px;">Relatórios e Ocorrências</h3>
+    <p>Acompanhe os atendimentos, diagnósticos e possíveis ocorrências para melhoria contínua do serviço.</p>
+  </div>
+</section>
+{% endblock %}

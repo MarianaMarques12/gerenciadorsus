@@ -3,10 +3,10 @@ from .models import *
 
 admin.site.register(Cidade)
 admin.site.register(GrupoRisco)
-admin.site.register(Paciente)
 admin.site.register(UnidadeSaude)
 admin.site.register(Especialidade)
 admin.site.register(Medico)
+admin.site.register(Paciente)
 admin.site.register(Agendamento)
 admin.site.register(Triagem)
 admin.site.register(ExameProcedimento)

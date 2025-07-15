@@ -1,9 +1,7 @@
 from django.contrib import admin
-from django.urls import path
-from app import views  # Certifique-se de que o app se chama "app"
+from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # path('pacientes/', views.listar_pacientes, name='listar_pacientes'),
-    path('', views.listar_pacientes, name='listar_pacientes'),  # Opcional: redireciona a raiz "/" para a mesma view
+    path('', include('app.urls')),
 ]

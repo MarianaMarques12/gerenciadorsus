@@ -1,22 +1,80 @@
-from django.shortcuts import render
+# gerenciadorsus/app/views_and_urls.py
 
-def home(request):
-    return render(request, 'home.html')
+from django.urls import path
+from django.views.generic import TemplateView, ListView
+from .models import Paciente, Agendamento, Triagem, AgendamentoExame, Notificacao
 
-def pacientes(request):
-    return render(request, 'pacientes.html')
+# --- VIEWS ---
 
-def agendamentos(request):
-    return render(request, 'agendamentos.html')
+class HomeView(TemplateView):
+    template_name = 'home.html'
 
-def triagem(request):
-    return render(request, 'triagem.html')
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['request'] = self.request
+        return context
 
-def exames(request):
-    return render(request, 'exames.html')
+class PacienteListView(ListView):
+    model = Paciente
+    template_name = 'pacientes.html'
+    context_object_name = 'pacientes'
+    queryset = Paciente.objects.select_related('cidade', 'grupo_risco').all()
 
-def notificacoes(request):
-    return render(request, 'notificacoes.html')
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['request'] = self.request
+        return context
 
-def relatorios(request):
-    return render(request, 'relatorios.html')
+class AgendamentoListView(ListView):
+    model = Agendamento
+    template_name = 'agendamentos.html'
+    context_object_name = 'agendamentos'
+    queryset = Agendamento.objects.select_related('paciente', 'medico').all()
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['request'] = self.request
+        return context
+
+class TriagemListView(ListView):
+    model = Triagem
+    template_name = 'triagem.html'
+    context_object_name = 'triagens'
+    queryset = Triagem.objects.select_related('paciente').all()
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['request'] = self.request
+        return context
+
+class ExameListView(ListView):
+    model = AgendamentoExame
+    template_name = 'exames.html'
+    context_object_name = 'exames'
+    queryset = AgendamentoExame.objects.select_related('paciente', 'exame_procedimento').all()
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['request'] = self.request
+        return context
+
+class NotificacaoListView(ListView):
+    model = Notificacao
+    template_name = 'notificacoes.html'
+    context_object_name = 'notificacoes'
+    queryset = Notificacao.objects.select_related('paciente').all()
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['request'] = self.request
+        return context
+
+class RelatoriosView(TemplateView):
+    template_name = 'relatorios.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['request'] = self.request
+        return context
+
+# --- URLS ---

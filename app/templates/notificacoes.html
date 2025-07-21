@@ -6,5 +6,28 @@
 {% block content %}
 <h2>Notificações e Lembretes</h2>
 <p>Envie e gerencie notificações para os pacientes.</p>
-<!-- Área para enviar notificações -->
+
+{% if notificacoes %}
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Paciente</th>
+        <th>Mensagem</th>
+        <th>Data de Envio</th>
+        <th>Status de Leitura</th>
+    </tr>
+    {% for n in notificacoes %}
+    <tr>
+        <td>{{ n.id }}</td>
+        <td>{{ n.paciente.nome }}</td>
+        <td>{{ n.mensagem }}</td>
+        <td>{{ n.data_envio|date:"d/m/Y H:i" }}</td>
+        <td>{{ n.get_status_leitura_display }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+<p>Nenhuma notificação cadastrada.</p>
+{% endif %}
+
 {% endblock %}

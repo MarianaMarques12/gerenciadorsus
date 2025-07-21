@@ -6,5 +6,44 @@
 {% block content %}
 <h2>Relatórios e Ocorrências</h2>
 <p>Visualize relatórios e registros de ocorrências para melhorar o atendimento.</p>
-<!-- Relatórios e ocorrências -->
+
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        margin-top: 1em;
+    }
+    th, td {
+        border: 1px solid #ccc;
+        padding: 8px;
+        text-align: left;
+    }
+    th {
+        background-color: #eee;
+    }
+</style>
+
+{% if ocorrencias %}
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Paciente</th>
+        <th>Descrição</th>
+        <th>Data</th>
+        <th>Tipo</th>
+    </tr>
+    {% for o in ocorrencias %}
+    <tr>
+        <td>{{ o.id }}</td>
+        <td>{{ o.paciente.nome }}</td>
+        <td>{{ o.descricao }}</td>
+        <td>{{ o.data|date:"d/m/Y" }}</td>
+        <td>{{ o.get_tipo_display }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+<p>Nenhuma ocorrência registrada.</p>
+{% endif %}
+
 {% endblock %}

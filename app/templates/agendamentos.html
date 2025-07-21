@@ -6,5 +6,44 @@
 {% block content %}
 <h2>Agendamentos de Consultas</h2>
 <p>Controle e visualize todos os agendamentos realizados no sistema.</p>
-<!-- Formulários e tabelas para agendamento -->
+
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th, td {
+        border: 1px solid #ccc;
+        padding: 8px;
+        text-align: left;
+    }
+
+    th {
+        background-color: #eee;
+    }
+</style>
+
+{% if agendamentos %}
+
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Paciente</th>
+        <th>Médico</th>
+        <th>Data e Hora</th>
+        <th>Status</th>
+    </tr>
+    {% for a in agendamentos %}
+    <tr>
+        <td>{{ a.id }}</td>
+        <td>{{ a.paciente.nome }}</td>
+        <td>{{ a.medico.nome }}</td>
+        <td>{{ a.data_hora|date:"d/m/Y H:i" }}</td>
+        <td>{{ a.get_status_display }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endif %}
 {% endblock %}

@@ -1,0 +1,35 @@
+<!-- gerenciadorsus/app/templates/triagem.html -->
+{% extends "base.html" %}
+
+{% block title %}Triagens - SUS+{% endblock %}
+
+{% block content %}
+<h2>Gestão de Triagens</h2>
+<p>Aqui você poderá cadastrar, editar e consultar as triagens do sistema.</p>
+
+{% if triagens %}
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Paciente</th>
+        <th>Data</th>
+        <th>Sintomas</th>
+        <th>Prioridade</th>
+        <th>Observações</th>
+    </tr>
+    {% for t in triagens %}
+    <tr>
+        <td>{{ t.id }}</td>
+        <td>{{ t.paciente.nome }}</td>
+        <td>{{ t.data|date:"d/m/Y" }}</td>
+        <td>{{ t.sintomas }}</td>
+        <td>{{ t.get_prioridade_display }}</td>
+        <td>{{ t.observacoes }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+<p>Nenhuma triagem cadastrada.</p>
+{% endif %}
+
+{% endblock %}

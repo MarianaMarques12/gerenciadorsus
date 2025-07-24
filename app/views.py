@@ -1,10 +1,5 @@
-# gerenciadorsus/app/views_and_urls.py
-
-from django.urls import path
 from django.views.generic import TemplateView, ListView
-from .models import Paciente, Agendamento, Triagem, AgendamentoExame, Notificacao
-
-# --- VIEWS ---
+from .models import Paciente, Agendamento, Triagem, AgendamentoExame, Notificacao, UnidadeSaude
 
 class HomeView(TemplateView):
     template_name = 'home.html'
@@ -77,4 +72,13 @@ class RelatoriosView(TemplateView):
         context['request'] = self.request
         return context
 
-# --- URLS ---
+class UnidadeSaudeListView(ListView):
+    model = UnidadeSaude
+    template_name = 'unidades_saude.html'   # Ajustado para bater com o nome do template
+    context_object_name = 'unidades'
+    queryset = UnidadeSaude.objects.all()
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['request'] = self.request
+        return context

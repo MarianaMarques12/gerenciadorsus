@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Unidades de Saúde - SUS+{% endblock %}
+
+{% block content %}
+<h2>Gestão de Unidades de Saúde</h2>
+<p>Aqui você poderá cadastrar, editar e consultar as unidades de saúde do sistema.</p>
+{% if unidades %}
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Nome da Unidade</th>
+        <th>Endereço</th>
+        <th>Cidade</th>
+        <th>Telefone</th>
+        <th>Responsável</th>
+    </tr>
+    {% for u in unidades %}
+    <tr>
+        <td>{{ u.id }}</td>
+        <td>{{ u.nome }}</td>
+        <td>{{ u.endereco }}</td>
+        <td>{{ u.cidade }}</td>
+        <td>{{ u.telefone }}</td>
+        <td>{{ u.responsavel }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+<p>Nenhuma unidade de saúde cadastrada no momento.</p>
+{% endif %}
+{% endblock %}

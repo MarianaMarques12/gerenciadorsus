@@ -7,14 +7,16 @@ from .views import (
     ExameListView,
     NotificacaoListView,
     RelatoriosView,
+    UnidadeSaudeListView,
 )
 
 urlpatterns = [
-    path('', HomeView.as_view(),          name='home'),
-    path('pacientes/', PacienteListView.as_view(),   name='pacientes'),
-    path('agendamentos/', AgendamentoListView.as_view(), name='agendamentos'),
-    path('triagem/', TriagemListView.as_view(),      name='triagem'),
-    path('exames/', ExameListView.as_view(),         name='exames'),
-    path('notificacoes/', NotificacaoListView.as_view(), name='notificacoes'),
-    path('relatorios/', RelatoriosView.as_view(),    name='relatorios'),
+    path('', HomeView.as_view(),                   name='home'),
+    path('pacientes/', PacienteListView.as_view(),           name='pacientes'),
+    path('agendamentos/', AgendamentoListView.as_view(),     name='agendamentos'),
+    path('triagem/', TriagemListView.as_view(),              name='triagem'),
+    path('exames/', ExameListView.as_view(),                 name='exames'),
+    path('notificacoes/', NotificacaoListView.as_view(),     name='notificacoes'),
+    path('relatorios/', RelatoriosView.as_view(),            name='relatorios'),
+    path('unidades/', UnidadeSaudeListView.as_view(),        name='unidades_saude'),  # Nome de URL padronizado
 ]

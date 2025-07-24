@@ -7,7 +7,7 @@
 <h2>Gestão de Exames e Procedimentos</h2>
 <p>Aqui você poderá cadastrar, editar e consultar os tipos de exames/procedimentos disponíveis no sistema.</p>
 
-{% if exame_procedimentos %}
+{% if exames %}
 <table>
     <tr>
         <th>ID</th>
@@ -15,11 +15,11 @@
         <th>Especialidade</th>
         <th>Descrição</th>
     </tr>
-    {% for e in exame_procedimentos %}
+    {% for e in exames %}
     <tr>
         <td>{{ e.id }}</td>
-        <td>{{ e.nome }}</td>
-        <td>{{ e.especialidade.nome }}</td>
+        <td>{{ e.paciente.nome }}</td>
+        <td>{{ e.especialidade }}</td>
         <td>{{ e.descricao }}</td>
     </tr>
     {% endfor %}
